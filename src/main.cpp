@@ -11,13 +11,15 @@ int main() {
     std::cin >> no_of_lines;
     std::cin >> power_iterations;
 
+    Graph pages;
+
     for(int i = 0; i < no_of_lines; i++) {
 
         std::cin >> from;
         std::cin >> to;
-        // Do Something
+        pages.InsertEdge(from, to);
     }
 
     //Create a graph object
-    Created_Graph.PageRank(power_iterations);
+    pages.PageRank(power_iterations);
 }
