@@ -4,7 +4,7 @@
 
 class Graph {
     private:
-        std::map<std::string, std::set<std::string>> AdjacencyList {};
+        std::map<std::string, std::set<std::pair<std::string, float>>> AdjacencyList {};
 
     public:
         void InsertEdge(std::string from, std::string to);
