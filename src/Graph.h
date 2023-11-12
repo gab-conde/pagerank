@@ -9,5 +9,6 @@ class Graph {
 
     public:
         //Think about what helper functions you will need in the algorithm
+        void InsertEdge(std::string from, std::string to);
         void PageRank(int n);
 };
