@@ -22,7 +22,35 @@ void Graph::InsertEdge(std::string from, std::string to) {
 }
 
 // Perform p power iterations and display results
-void Graph::PageRank(int n){}
+void Graph::PageRank(int n){
+
+    RankPages();
+    InitializeRankList();
+
+    for (int i = 1; i < n; i++) {
+
+        std::map<std::string, float> newRanks;
+
+        for (auto page : AdjacencyList) {
+
+            float sum = 0;
+
+            for (auto pair : page.second) {
+
+                sum += pair.second * RankList[page.first];
+            }
+
+            newRanks.emplace(page.first, sum);
+        }
+
+        for (auto page : newRanks) {
+
+            RankList[page.first] = page.second;
+        }
+    }
+
+    PrintRanks();
+}
 
 // Calculate the rank of each page
 void Graph::RankPages() {
