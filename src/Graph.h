@@ -14,6 +14,6 @@ class Graph {
 
     private:
         void RankPages();
-        void InitializeRanks();
+        void InitializeRankList();
         void PrintRanks() const;
 };

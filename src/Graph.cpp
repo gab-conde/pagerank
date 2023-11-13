@@ -37,7 +37,7 @@ void Graph::RankPages() {
 }
 
 // Initialize all power iteration ranks to 1/|V|
-void Graph::InitializeRanks() {
+void Graph::InitializeRankList() {
 
     int V = AdjacencyList.size();
 
