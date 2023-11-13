@@ -13,11 +13,11 @@ void Graph::InsertEdge(std::string from, std::string to) {
     AdjacencyList[to].push_back(std::make_pair(from, 0.0f));
     sort(AdjacencyList[to].begin(), AdjacencyList[to].end());
 
-    if (Outdegrees.find(to) != Outdegrees.end()) {
-        Outdegrees[to]++;
+    if (Outdegrees.find(from) != Outdegrees.end()) {
+        Outdegrees[from]++;
     }
     else {
-        Outdegrees.emplace(to, 1);
+        Outdegrees.emplace(from, 1);
     }
 }
 
@@ -37,7 +37,7 @@ void Graph::PageRank(int n){
 
             for (auto pair : page.second) {
 
-                sum += pair.second * RankList[page.first];
+                sum += pair.second * RankList[pair.first];
             }
 
             newRanks.emplace(page.first, sum);
@@ -55,9 +55,9 @@ void Graph::PageRank(int n){
 // Calculate the rank of each page
 void Graph::RankPages() {
     
-    for (auto page : AdjacencyList) {
+    for (auto& page : AdjacencyList) {
 
-        for (auto pair : page.second) {
+        for (auto& pair : page.second) {
             
             pair.second = 1.0 / Outdegrees[pair.first];
         }
